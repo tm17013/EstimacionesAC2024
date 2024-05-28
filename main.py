@@ -237,6 +237,38 @@ def calcular_puntos_de_funcion_no_ajustados(entradas_externas, salidas_externas,
     total = total_ee + total_se + total_ce + total_ai + total_ae
     return total
 
+#calculodeFactordeAjuste
+def calcular_factor_ajuste():
+    print("Por favor, responde las siguientes preguntas utilizando una escala del 0 al 5:")
+    preguntas = [
+        "1. ¿El sistema requiere respaldo y recuperación confiables?",
+        "2. ¿Se requieren comunicaciones de datos especializadas para transferir información hacia o desde la aplicación?",
+        "3. ¿Existen funciones de procesamiento distribuidas?",
+        "4. ¿El desempeño es crucial?",
+        "5. ¿El sistema correrá en un entorno operativo existente enormemente utilizado?",
+        "6. ¿El sistema requiere entrada de datos en línea?",
+        "7. ¿La entrada de datos en línea requiere que la transacción de entrada se construya sobre múltiples pantallas u operaciones?",
+        "8. ¿Los ALI se actualizan en línea?",
+        "9. ¿Las entradas, salidas, archivos o consultas son complejos?",
+        "10. ¿El procesamiento interno es complejo?",
+        "11. ¿El código se diseña para ser reutilizable?",
+        "12. ¿La conversión y la instalación se incluyen en el diseño?",
+        "13. ¿El sistema se diseña para instalaciones múltiples en diferentes organizaciones?",
+        "14. ¿La aplicación se diseña para facilitar el cambio y su uso por parte del usuario?"
+    ]
+
+    factor_ajuste = 0
+    for pregunta in preguntas:
+        respuesta = int(input(f"{pregunta} (0 a 5): "))
+        factor_ajuste += respuesta
+
+    return factor_ajuste
+
+#calcularPFA
+def calcular_puntos_funcion_ajustados(puntos_no_ajustados, factor_ajuste):
+    # Aplicar la fórmula para calcular los puntos de función ajustados
+    puntos_funcion_ajustados = puntos_no_ajustados * (0.65 + (0.01 * factor_ajuste))
+    return puntos_funcion_ajustados
 
 #metodo punto de funcion
 def punto_de_funcion():
@@ -374,10 +406,23 @@ def main():
                     print(f"{i+1}. Nombre: {nombre}, Datos: {datos}, Registros: {registros}, Complejidad: {tipo_complejidad_archivo}")
 
 
-# Calcular puntos de función no ajustados
+           # Calcular puntos de función no ajustados
            puntos_no_ajustados = calcular_puntos_de_funcion_no_ajustados(entradas_externas, salidas_externas, consultas_externas, archivos_internos, archivos_externos)
            print("\nCalculando Puntos de Función No Ajustados...")
            print("Puntos de Función No Ajustados:", puntos_no_ajustados)
+           print("\n")
+
+           # Calcular factor de ajuste
+           factor_ajuste = calcular_factor_ajuste()
+           print("\nCalculando Factor de Ajuste...")
+           print("Factor de Ajuste:", factor_ajuste)
+           print("\n")
+
+           # Calcular puntos de función ajustados
+           puntos_funcion_ajustados = calcular_puntos_funcion_ajustados(puntos_no_ajustados, factor_ajuste)
+           print("Calculando Puntos de Función Ajustados...")
+           print("Puntos de Función Ajustados:", puntos_funcion_ajustados)
+           print("\n")
 
         elif opcion == "2":
             casos_de_uso()
