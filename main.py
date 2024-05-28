@@ -109,6 +109,134 @@ def clasificar_complejidad_consulta(tipo_clasificacion_entrada, tipo_clasificaci
     indice_salida = niveles_complejidad.index(tipo_clasificacion_salida)
     return niveles_complejidad[max(indice_entrada, indice_salida)]
 
+#clasificaciondeArchivos
+def clasificar_complejidad_archivo_interno(datos_elementales_referenciados, registros_logic_referenciados):
+    if 1 <= datos_elementales_referenciados <= 19:
+        if registros_logic_referenciados == 1:
+            return "SIMPLE"
+        elif 2 <= registros_logic_referenciados <= 5:
+            return "SIMPLE"
+        else:
+            return "MEDIO"
+    elif 20 <= datos_elementales_referenciados <= 50:
+        if registros_logic_referenciados == 1:
+            return "SIMPLE"
+        elif 2 <= registros_logic_referenciados <= 5:
+            return "MEDIO"
+        else:
+            return "COMPLEJO"
+    else:  # datos_elementales_referenciados >= 51
+        if registros_logic_referenciados == 1:
+            return "MEDIO"
+        elif 2 <= registros_logic_referenciados <= 5:
+            return "COMPLEJO"
+        else:
+            return "COMPLEJO"
+
+#clasificacionInterfaces
+def clasificar_complejidad_archivo_interfaz(datos_elementales_referenciados, registros_logic_referenciados):
+    if 1 <= datos_elementales_referenciados <= 19:
+        if registros_logic_referenciados == 1:
+            return "SIMPLE"
+        elif 2 <= registros_logic_referenciados <= 5:
+            return "SIMPLE"
+        else:
+            return "MEDIO"
+    elif 20 <= datos_elementales_referenciados <= 50:
+        if registros_logic_referenciados == 1:
+            return "SIMPLE"
+        elif 2 <= registros_logic_referenciados <= 5:
+            return "MEDIO"
+        else:
+            return "COMPLEJO"
+    else:  # datos_elementales_referenciados >= 51
+        if registros_logic_referenciados == 1:
+            return "MEDIO"
+        elif 2 <= registros_logic_referenciados <= 5:
+            return "COMPLEJO"
+        else:
+            return "COMPLEJO"
+
+#calculo de PF no ajustados
+def calcular_puntos_de_funcion_no_ajustados(entradas_externas, salidas_externas, consultas_externas, archivos_internos, archivos_externos):
+    # Contadores para cada tipo de función
+    total_ee_simple = 0
+    total_ee_medio = 0
+    total_ee_complejo = 0
+
+    total_se_simple = 0
+    total_se_medio = 0
+    total_se_complejo = 0
+
+    total_ce_simple = 0
+    total_ce_medio = 0
+    total_ce_complejo = 0
+
+    total_ai_simple = 0
+    total_ai_medio = 0
+    total_ai_complejo = 0
+
+    total_ae_simple = 0
+    total_ae_medio = 0
+    total_ae_complejo = 0
+
+    # Contar y clasificar entradas externas
+    for nombre, datos, registros, tipo_complejidad in entradas_externas:
+        if tipo_complejidad == "SIMPLE":
+            total_ee_simple += 1
+        elif tipo_complejidad == "MEDIO":
+            total_ee_medio += 1
+        elif tipo_complejidad == "COMPLEJO":
+            total_ee_complejo += 1
+
+    # Contar y clasificar salidas externas
+    for nombre, datos, registros, tipo_complejidad in salidas_externas:
+        if tipo_complejidad == "SIMPLE":
+            total_se_simple += 1
+        elif tipo_complejidad == "MEDIO":
+            total_se_medio += 1
+        elif tipo_complejidad == "COMPLEJO":
+            total_se_complejo += 1
+
+    # Contar y clasificar consultas externas
+    for nombre, entradas_DE, entradas_RL, tipo_clasificacion_entrada, salidas_DE, salidas_RL, tipo_clasificacion_salida, tipo_clasificacion_consulta in consultas_externas:
+        if tipo_clasificacion_consulta == "SIMPLE":
+            total_ce_simple += 1
+        elif tipo_clasificacion_consulta == "MEDIO":
+            total_ce_medio += 1
+        elif tipo_clasificacion_consulta == "COMPLEJO":
+            total_ce_complejo += 1
+
+    # Contar y clasificar archivos lógicos internos
+    for nombre, datos, registros in archivos_internos:
+        tipo_complejidad_archivo = clasificar_complejidad_archivo_interno(datos, registros)
+        if tipo_complejidad_archivo == "SIMPLE":
+            total_ai_simple += 1
+        elif tipo_complejidad_archivo == "MEDIO":
+            total_ai_medio += 1
+        elif tipo_complejidad_archivo == "COMPLEJO":
+            total_ai_complejo += 1
+
+    # Contar y clasificar archivos de interfaz externa
+    for nombre, datos, registros in archivos_externos:
+        tipo_complejidad_archivo = clasificar_complejidad_archivo_interfaz(datos, registros)
+        if tipo_complejidad_archivo == "SIMPLE":
+            total_ae_simple += 1
+        elif tipo_complejidad_archivo == "MEDIO":
+            total_ae_medio += 1
+        elif tipo_complejidad_archivo == "COMPLEJO":
+            total_ae_complejo += 1
+
+    # Calcular los puntos de función no ajustados
+    total_ee = (total_ee_simple * 3) + (total_ee_medio * 4) + (total_ee_complejo * 6)
+    total_se = (total_se_simple * 4) + (total_se_medio * 5) + (total_se_complejo * 7)
+    total_ce = (total_ce_simple * 3) + (total_ce_medio * 4) + (total_ce_complejo * 6)
+    total_ai = (total_ai_simple * 7) + (total_ai_medio * 10) + (total_ai_complejo * 15)
+    total_ae = (total_ae_simple * 5) + (total_ae_medio * 7) + (total_ae_complejo * 10)
+
+    total = total_ee + total_se + total_ce + total_ai + total_ae
+    return total
+
 
 #metodo punto de funcion
 def punto_de_funcion():
@@ -209,7 +337,7 @@ def main():
         if opcion == "1":
            #punto_de_funcion()
            entradas_externas, salidas_externas, consultas_externas, archivos_internos, archivos_externos = punto_de_funcion()
-            
+           print("\nClasificación por Tipo de Complejidad:")
            if entradas_externas:
                 print("\nResumen Entradas Externas:")
                 for i, entrada in enumerate(entradas_externas):
@@ -235,14 +363,21 @@ def main():
                 print("\nResumen Archivos Lógicos Internos:")
                 for i, archivo in enumerate(archivos_internos):
                     nombre, datos, registros = archivo
-                    print(f"{i+1}. Nombre: {nombre}, Datos: {datos}, Registros: {registros}")
+                    tipo_complejidad_archivo = clasificar_complejidad_archivo_interno(datos, registros)
+                    print(f"{i+1}. Nombre: {nombre}, Datos: {datos}, Registros: {registros}, Complejidad: {tipo_complejidad_archivo}")
             
            if archivos_externos:
                 print("\nResumen Archivos de Interfaz Externa:")
                 for i, archivo in enumerate(archivos_externos):
                     nombre, datos, registros = archivo
-                    print(f"{i+1}. Nombre: {nombre}, Datos: {datos}, Registros: {registros}")
+                    tipo_complejidad_archivo = clasificar_complejidad_archivo_interfaz(datos, registros)
+                    print(f"{i+1}. Nombre: {nombre}, Datos: {datos}, Registros: {registros}, Complejidad: {tipo_complejidad_archivo}")
 
+
+# Calcular puntos de función no ajustados
+           puntos_no_ajustados = calcular_puntos_de_funcion_no_ajustados(entradas_externas, salidas_externas, consultas_externas, archivos_internos, archivos_externos)
+           print("\nCalculando Puntos de Función No Ajustados...")
+           print("Puntos de Función No Ajustados:", puntos_no_ajustados)
 
         elif opcion == "2":
             casos_de_uso()
