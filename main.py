@@ -1,4 +1,4 @@
-# autores: Kenia Stephannie Tepas Mazariego, Victoria Castro
+# autores: Kenia Stephannie Tepas Mazariego, Andrea Victoria Castro Jiménez
 def mostrar_menu():
     print("Bienvenido al Sistema de Estimaciones")
     print("Analisis de Costos Informaticos 2024")
@@ -352,10 +352,46 @@ def punto_de_funcion():
 ##fin de metodo punto de funcion
 
 
-
+#INICIO CASO DE USO
 def casos_de_uso():
     print("Has seleccionado Casos de Uso")
-    # Aquí puedes agregar la lógica para Casos de Uso
+  # Se itera la informacion  de los actores de caso de uso
+    num_actores = int(input("\nNúmero de actores: "))
+    peso_actores = []
+    
+    for i in range(num_actores):  
+        peso_actores.append(int(input(f"Peso del actor {i+1} (1.Simple, 2.Medio, 3.Complejo): ")))
+        
+    total_peso_actores = sum(peso_actores)
+    
+    # Se itera la informacion de los casos de uso
+    num_casos_uso = int(input("\nNúmero de casos de uso: "))
+    peso_casos_uso = []
+    
+    for i in range(num_casos_uso):
+        num_transacciones = int(input(f"¿Cuántas transacciones tiene el caso de uso {i+1}? -> "))
+        if num_transacciones < 4:
+            peso_casos_uso.append(5)
+        elif num_transacciones < 8:
+            peso_casos_uso.append(10)
+        else:
+            peso_casos_uso.append(15)  
+
+    total_peso_casos_uso = sum(peso_casos_uso)
+
+# Calculo de Punto de Casos de Uso no ajustados
+    puntos_casos_uso_no_ajustados = total_peso_actores +  total_peso_casos_uso
+
+    print(f"\nPeso de los actores: {total_peso_actores}\nPeso de los casos de uso: {total_peso_casos_uso}\nPuntos de Casos de Uso no ajustados: {puntos_casos_uso_no_ajustados} \n")
+
+
+
+
+
+
+
+
+#FIN CASO DE USO
 
 def cosmic():
     print("Has seleccionado COSMIC")
