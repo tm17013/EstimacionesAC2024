@@ -355,7 +355,7 @@ def punto_de_funcion():
 #INICIO CASO DE USO
 def casos_de_uso():
     print("Has seleccionado Casos de Uso")
-  # Se itera la informacion  de los actores de caso de uso
+    # Se itera la informacion  de los actores de caso de uso
     num_actores = int(input("\nNúmero de actores: "))
     peso_actores = []
     
@@ -382,14 +382,63 @@ def casos_de_uso():
 # Calculo de Punto de Casos de Uso no ajustados
     puntos_casos_uso_no_ajustados = total_peso_actores +  total_peso_casos_uso
 
-    print(f"\nPeso de los actores: {total_peso_actores}\nPeso de los casos de uso: {total_peso_casos_uso}\nPuntos de Casos de Uso no ajustados: {puntos_casos_uso_no_ajustados} \n")
 
+    # Factores Técnicos (TCF)
+    print("\nIngresa los valores de los factores técnicos (0-5):\n")
+    factores_tecnicos = [
+        ("1. Sistema distribuido", 2),
+        ("2. Rendimiento o tiempo de respuesta", 1),
+        ("3. Eficiencia del usuario final", 1),
+        ("4. Procesamiento interno complejo", 1),
+        ("5. El código debe ser reutilizable", 1),
+        ("6. Facilidad de instalación", 0.5),
+        ("7. Facilidad de uso", 0.5),
+        ("8. Portabilidad", 2),
+        ("9. Facilidad de cambio", 1),
+        ("10. Concurrencia", 1),
+        ("11. Características especiales de seguridad", 1),
+        ("12. Provee acceso directo a terceras partes", 1),
+        ("13. Se requiere facilidades especiales de entrenamiento a usuario", 1)
+    ]
+    total_factores_tecnicos = 0
 
+    for factor, peso in factores_tecnicos:
+        valor = int(input(f"{factor}: "))
+        total_factores_tecnicos += valor * peso
 
+    tcf = 0.6 + (0.01 * total_factores_tecnicos)
 
+    # Factores Ambientales (ECF)
+    print("\nIngresa los valores de los factores ambientales (1-5):\n")
+    factores_ambientales = [
+        ("1. Familiaridad con el modelo de proyecto utilizado", 1.5),
+        ("2. Personal tiempo parcial", -1),
+        ("3. Capacidad del analista líder", 0.5),
+        ("4. Experiencia en la aplicación", 0.5),
+        ("5. Experiencia en orientación a objetos", 1),
+        ("6. Motivación", 1),
+        ("7. Dificultad del lenguaje de programación", -1),
+        ("8. Estabilidad de los requerimientos", 2)
+    ]
+    total_factores_ambientales = 0
 
+    for factor, peso in factores_ambientales:
+        valor = int(input(f"{factor}: "))
+        total_factores_ambientales += valor * peso
 
+    ecf = 1.4 + (-0.03 * total_factores_ambientales)
 
+    # Calculo de Puntos de Caso de Uso Ajustados (UCP)
+    ucp = puntos_casos_uso_no_ajustados * tcf * ecf
+        
+    #Impresion de los resultados
+    print("\nResultados:")
+    print(f"\nPeso de los actores: {total_peso_actores}\nPeso de los casos de uso: {total_peso_casos_uso}\nPuntos de Casos de Uso no ajustados: {puntos_casos_uso_no_ajustados}")
+    print(f"Total de Factores Técnicos: {total_factores_tecnicos}")
+    print(f"TCF (Factor de Complejidad Técnica): {tcf}")
+    print(f"Total de Factores Ambientales: {total_factores_ambientales}")
+    print(f"ECF (Factor de Complejidad Ambiental): {ecf}")
+    print(f"Puntos de Caso de Uso Ajustados (AUCP): {ucp}\n")
 
 #FIN CASO DE USO
 
