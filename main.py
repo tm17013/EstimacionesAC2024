@@ -1,9 +1,11 @@
 # autores: Kenia Stephannie Tepas Mazariego, Andrea Victoria Castro Jiménez
-def mostrar_menu():
-    print("\nBienvenido al Sistema de Estimaciones")
-    print("Analisis de Costos Informaticos 2024")
-    print("Creado por: Kenia Tepas y Victoria Castro")
-    print("Elija una opción")
+def menu():
+    print("**********************************************")
+    print("*    Bienvenido al Sistema de Estimaciones   *")
+    print("*    Analisis de Costos Informaticos 2024    *")
+    print("*  Creado por: Kenia Tepas y Victoria Castro *")
+    print("**********************************************")
+    print("\nElija una opción")
     print("1. Punto de Función")
     print("2. Casos de Uso")
     print("3. COSMIC")
@@ -11,155 +13,155 @@ def mostrar_menu():
 
 #calculandotipodecomplejidadPF:
 #clasificacionparaentradas:
-def clasificar_complejidad_entrada_externa(datos_elementales_referenciados, registros_logic_referenciados):
-    if 1 <= datos_elementales_referenciados <= 4:
-        if registros_logic_referenciados <= 1:
+def clasificar_complejidad_ee(datos_referenciados, registros_referenciados):
+    if 1 <= datos_referenciados <= 4:
+        if registros_referenciados <= 1:
             return "SIMPLE"
-        elif registros_logic_referenciados == 2:
+        elif registros_referenciados == 2:
             return "SIMPLE"
         else:
             return "MEDIO"
-    elif 5 <= datos_elementales_referenciados <= 15:
-        if registros_logic_referenciados <= 1:
+    elif 5 <= datos_referenciados <= 15:
+        if registros_referenciados <= 1:
             return "SIMPLE"
-        elif registros_logic_referenciados == 2:
+        elif registros_referenciados == 2:
             return "MEDIO"
         else:
             return "COMPLEJO"
-    else:  # datos_elementales_referenciados >= 16
-        if registros_logic_referenciados <= 1:
+    else:  # datos_referenciados >= 16
+        if registros_referenciados <= 1:
             return "MEDIO"
-        elif registros_logic_referenciados == 2:
+        elif registros_referenciados == 2:
             return "COMPLEJO"
         else:
             return "COMPLEJO"
 #clasificacionparasalidas:
-def clasificar_complejidad_salida_externa(datos_elementales_referenciados, registros_logic_referenciados):
-    if 1 <= datos_elementales_referenciados <= 5:
-        if registros_logic_referenciados <= 1:
+def clasificar_complejidad_se(datos_referenciados, registros_referenciados):
+    if 1 <= datos_referenciados <= 5:
+        if registros_referenciados <= 1:
             return "SIMPLE"
-        elif registros_logic_referenciados <= 3:
+        elif registros_referenciados <= 3:
             return "SIMPLE"
         else:
             return "MEDIO"
-    elif 6 <= datos_elementales_referenciados <= 19:
-        if registros_logic_referenciados <= 1:
+    elif 6 <= datos_referenciados <= 19:
+        if registros_referenciados <= 1:
             return "SIMPLE"
-        elif registros_logic_referenciados <= 3:
+        elif registros_referenciados <= 3:
             return "MEDIO"
         else:
             return "COMPLEJO"
-    elif registros_logic_referenciados <= 1:
+    elif registros_referenciados <= 1:
         return "MEDIO"
-    elif registros_logic_referenciados <= 3:
+    elif registros_referenciados <= 3:
         return "COMPLEJO"
     else:
         return "COMPLEJO"
 
 #clasificacionparaconsultas:
-def clasificar_complejidad_entrada(datos_elementales_referenciados, registros_logicos_referenciados):
-    if 1 <= datos_elementales_referenciados <= 4:
-        if registros_logicos_referenciados <= 1:
+def clasificar_complejidad_entrada(datos_referenciados, registros_referenciados):
+    if 1 <= datos_referenciados <= 4:
+        if registros_referenciados <= 1:
             return "SIMPLE"
-        elif registros_logicos_referenciados == 2:
-            return "SIMPLE"
-        else:
-            return "MEDIO"
-    elif 5 <= datos_elementales_referenciados <= 15:
-        if registros_logicos_referenciados <= 1:
-            return "SIMPLE"
-        elif registros_logicos_referenciados == 2:
-            return "MEDIO"
-        else:
-            return "COMPLEJO"
-    else:  # datos_elementales_referenciados >= 16
-        if registros_logicos_referenciados <= 1:
-            return "MEDIO"
-        elif registros_logicos_referenciados == 2:
-            return "COMPLEJO"
-        else:
-            return "COMPLEJO"
-
-def clasificar_complejidad_salida(datos_elementales_referenciados, registros_logicos_referenciados):
-    if 1 <= datos_elementales_referenciados <= 5:
-        if registros_logicos_referenciados <= 1:
-            return "SIMPLE"
-        elif registros_logicos_referenciados <= 3:
+        elif registros_referenciados == 2:
             return "SIMPLE"
         else:
             return "MEDIO"
-    elif 6 <= datos_elementales_referenciados <= 19:
-        if registros_logicos_referenciados <= 1:
+    elif 5 <= datos_referenciados <= 15:
+        if registros_referenciados <= 1:
             return "SIMPLE"
-        elif registros_logicos_referenciados <= 3:
+        elif registros_referenciados == 2:
             return "MEDIO"
         else:
             return "COMPLEJO"
-    else:  # datos_elementales_referenciados >= 20
-        if registros_logicos_referenciados <= 1:
+    else:  # datos_referenciados >= 16
+        if registros_referenciados <= 1:
             return "MEDIO"
-        elif registros_logicos_referenciados <= 3:
+        elif registros_referenciados == 2:
             return "COMPLEJO"
         else:
             return "COMPLEJO"
 
-def clasificar_complejidad_consulta(tipo_clasificacion_entrada, tipo_clasificacion_salida):
+def clasificar_complejidad_salida(datos_referenciados, registros_referenciados):
+    if 1 <= datos_referenciados <= 5:
+        if registros_referenciados <= 1:
+            return "SIMPLE"
+        elif registros_referenciados <= 3:
+            return "SIMPLE"
+        else:
+            return "MEDIO"
+    elif 6 <= datos_referenciados <= 19:
+        if registros_referenciados <= 1:
+            return "SIMPLE"
+        elif registros_referenciados <= 3:
+            return "MEDIO"
+        else:
+            return "COMPLEJO"
+    else:  # datos_referenciados >= 20
+        if registros_referenciados <= 1:
+            return "MEDIO"
+        elif registros_referenciados <= 3:
+            return "COMPLEJO"
+        else:
+            return "COMPLEJO"
+
+def clasificar_complejidad_ce(tipo_clasificacion_entrada, tipo_clasificacion_salida):
     niveles_complejidad = ["SIMPLE", "MEDIO", "COMPLEJO"]
     indice_entrada = niveles_complejidad.index(tipo_clasificacion_entrada)
     indice_salida = niveles_complejidad.index(tipo_clasificacion_salida)
     return niveles_complejidad[max(indice_entrada, indice_salida)]
 
 #clasificaciondeArchivos
-def clasificar_complejidad_archivo_interno(datos_elementales_referenciados, registros_logic_referenciados):
-    if 1 <= datos_elementales_referenciados <= 19:
-        if registros_logic_referenciados == 1:
+def clasificar_complejidad_ali(datos_referenciados, registros_referenciados):
+    if 1 <= datos_referenciados <= 19:
+        if registros_referenciados == 1:
             return "SIMPLE"
-        elif 2 <= registros_logic_referenciados <= 5:
+        elif 2 <= registros_referenciados <= 5:
             return "SIMPLE"
         else:
             return "MEDIO"
-    elif 20 <= datos_elementales_referenciados <= 50:
-        if registros_logic_referenciados == 1:
+    elif 20 <= datos_referenciados <= 50:
+        if registros_referenciados == 1:
             return "SIMPLE"
-        elif 2 <= registros_logic_referenciados <= 5:
+        elif 2 <= registros_referenciados <= 5:
             return "MEDIO"
         else:
             return "COMPLEJO"
     else:  # datos_elementales_referenciados >= 51
-        if registros_logic_referenciados == 1:
+        if registros_referenciados == 1:
             return "MEDIO"
-        elif 2 <= registros_logic_referenciados <= 5:
+        elif 2 <= registros_referenciados <= 5:
             return "COMPLEJO"
         else:
             return "COMPLEJO"
 
 #clasificacionInterfaces
-def clasificar_complejidad_archivo_interfaz(datos_elementales_referenciados, registros_logic_referenciados):
-    if 1 <= datos_elementales_referenciados <= 19:
-        if registros_logic_referenciados == 1:
+def clasificar_complejidad_aie(datos_referenciados, registros_referenciados):
+    if 1 <= datos_referenciados <= 19:
+        if registros_referenciados == 1:
             return "SIMPLE"
-        elif 2 <= registros_logic_referenciados <= 5:
+        elif 2 <= registros_referenciados <= 5:
             return "SIMPLE"
         else:
             return "MEDIO"
-    elif 20 <= datos_elementales_referenciados <= 50:
-        if registros_logic_referenciados == 1:
+    elif 20 <= datos_referenciados <= 50:
+        if registros_referenciados == 1:
             return "SIMPLE"
-        elif 2 <= registros_logic_referenciados <= 5:
+        elif 2 <= registros_referenciados <= 5:
             return "MEDIO"
         else:
             return "COMPLEJO"
-    else:  # datos_elementales_referenciados >= 51
-        if registros_logic_referenciados == 1:
+    else:  # datos_referenciados >= 51
+        if registros_referenciados == 1:
             return "MEDIO"
-        elif 2 <= registros_logic_referenciados <= 5:
+        elif 2 <= registros_referenciados <= 5:
             return "COMPLEJO"
         else:
             return "COMPLEJO"
 
 #calculo de PF no ajustados
-def calcular_puntos_de_funcion_no_ajustados(entradas_externas, salidas_externas, consultas_externas, archivos_internos, archivos_externos):
-    # Contadores para cada tipo de función
+def pf_no_ajustados(entradas_externas, salidas_externas, consultas_externas, archivos_internos, archivos_externos):
+    #variables
     total_ee_simple = 0
     total_ee_medio = 0
     total_ee_complejo = 0
@@ -180,7 +182,7 @@ def calcular_puntos_de_funcion_no_ajustados(entradas_externas, salidas_externas,
     total_ae_medio = 0
     total_ae_complejo = 0
 
-    # Contar y clasificar entradas externas
+    #cuenta y clasifica las entradas
     for nombre, datos, registros, tipo_complejidad in entradas_externas:
         if tipo_complejidad == "SIMPLE":
             total_ee_simple += 1
@@ -189,7 +191,7 @@ def calcular_puntos_de_funcion_no_ajustados(entradas_externas, salidas_externas,
         elif tipo_complejidad == "COMPLEJO":
             total_ee_complejo += 1
 
-    # Contar y clasificar salidas externas
+    #cuenta y clasifica las salidas
     for nombre, datos, registros, tipo_complejidad in salidas_externas:
         if tipo_complejidad == "SIMPLE":
             total_se_simple += 1
@@ -198,7 +200,7 @@ def calcular_puntos_de_funcion_no_ajustados(entradas_externas, salidas_externas,
         elif tipo_complejidad == "COMPLEJO":
             total_se_complejo += 1
 
-    # Contar y clasificar consultas externas
+    #cuenta y clasifica las consultas
     for nombre, entradas_DE, entradas_RL, tipo_clasificacion_entrada, salidas_DE, salidas_RL, tipo_clasificacion_salida, tipo_clasificacion_consulta in consultas_externas:
         if tipo_clasificacion_consulta == "SIMPLE":
             total_ce_simple += 1
@@ -207,9 +209,9 @@ def calcular_puntos_de_funcion_no_ajustados(entradas_externas, salidas_externas,
         elif tipo_clasificacion_consulta == "COMPLEJO":
             total_ce_complejo += 1
 
-    # Contar y clasificar archivos lógicos internos
+    #cuenta y clasifica los ali
     for nombre, datos, registros in archivos_internos:
-        tipo_complejidad_archivo = clasificar_complejidad_archivo_interno(datos, registros)
+        tipo_complejidad_archivo = clasificar_complejidad_ali(datos, registros)
         if tipo_complejidad_archivo == "SIMPLE":
             total_ai_simple += 1
         elif tipo_complejidad_archivo == "MEDIO":
@@ -217,9 +219,9 @@ def calcular_puntos_de_funcion_no_ajustados(entradas_externas, salidas_externas,
         elif tipo_complejidad_archivo == "COMPLEJO":
             total_ai_complejo += 1
 
-    # Contar y clasificar archivos de interfaz externa
+    #cuenta y clasifica los aie
     for nombre, datos, registros in archivos_externos:
-        tipo_complejidad_archivo = clasificar_complejidad_archivo_interfaz(datos, registros)
+        tipo_complejidad_archivo = clasificar_complejidad_aie(datos, registros)
         if tipo_complejidad_archivo == "SIMPLE":
             total_ae_simple += 1
         elif tipo_complejidad_archivo == "MEDIO":
@@ -227,7 +229,7 @@ def calcular_puntos_de_funcion_no_ajustados(entradas_externas, salidas_externas,
         elif tipo_complejidad_archivo == "COMPLEJO":
             total_ae_complejo += 1
 
-    # Calcular los puntos de función no ajustados
+    #calculo los puntos de función no ajustados
     total_ee = (total_ee_simple * 3) + (total_ee_medio * 4) + (total_ee_complejo * 6)
     total_se = (total_se_simple * 4) + (total_se_medio * 5) + (total_se_complejo * 7)
     total_ce = (total_ce_simple * 3) + (total_ce_medio * 4) + (total_ce_complejo * 6)
@@ -265,49 +267,48 @@ def calcular_factor_ajuste():
     return factor_ajuste
 
 #calcularPFA
-def calcular_puntos_funcion_ajustados(puntos_no_ajustados, factor_ajuste):
-    # Aplicar la fórmula para calcular los puntos de función ajustados
+def pfa(puntos_no_ajustados, factor_ajuste):
+    #fórmula para calcular los puntos de función ajustados
     puntos_funcion_ajustados = puntos_no_ajustados * (0.65 + (0.01 * factor_ajuste))
     return puntos_funcion_ajustados
 
 #metodo punto de funcion
 def punto_de_funcion():
     print("Has seleccionado Punto de Función")
-    # Aquí puedes agregar la lógica para Punto de Función
+    #informacion de dominios
     print("Por favor, ingresa la siguiente información:")
-
-      # Solicitar el número de entradas externas
+      #número de entradas externas
     num_entradas_externas = int(input("Número de entradas externas: "))
     entradas_externas = []
     if num_entradas_externas > 0:
-        # Recopilar información para cada entrada externa
+        #información para cada entrada externa
         for i in range(num_entradas_externas):
             print(f"\nEntrada Externa {i+1}:")
             nombre = input("Nombre: ")
-            datos_elementales_referenciados = int(input("Número de Datos Elementales Referenciados: "))
-            registros_logic_referenciados = int(input("Número de Registros Lógicos Referenciados: "))
-            tipo_clasificacion = clasificar_complejidad_entrada_externa(datos_elementales_referenciados, registros_logic_referenciados)
-            entradas_externas.append((nombre, datos_elementales_referenciados, registros_logic_referenciados, tipo_clasificacion))
+            datos_referenciados = int(input("Número de Datos Elementales Referenciados: "))
+            registros_referenciados = int(input("Número de Registros Lógicos Referenciados: "))
+            tipo_clasificacion = clasificar_complejidad_ee(datos_referenciados, registros_referenciados)
+            entradas_externas.append((nombre, datos_referenciados, registros_referenciados, tipo_clasificacion))
 
-    # Solicitar el número de salidas externas
+    #número de salidas externas
     num_salidas_externas = int(input("\nNúmero de salidas externas: "))
     salidas_externas = []
     if num_salidas_externas > 0:
-        # Recopilar información para cada salida externa
+        #información para cada salida externa
         for i in range(num_salidas_externas):
             print(f"\nSalida Externa {i+1}:")
             nombre = input("Nombre: ")
-            datos_elementales_referenciados = int(input("Número de Datos Elementales Referenciados: "))
-            registros_logic_referenciados = int(input("Número de Registros Lógicos Referenciados: "))
-            tipo_clasificacion = clasificar_complejidad_salida_externa(datos_elementales_referenciados, registros_logic_referenciados)
-            salidas_externas.append((nombre, datos_elementales_referenciados, registros_logic_referenciados, tipo_clasificacion))
+            datos_referenciados = int(input("Número de Datos Elementales Referenciados: "))
+            registros_referenciados = int(input("Número de Registros Lógicos Referenciados: "))
+            tipo_clasificacion = clasificar_complejidad_se(datos_referenciados, registros_referenciados)
+            salidas_externas.append((nombre, datos_referenciados, registros_referenciados, tipo_clasificacion))
    
    
-    # Solicitar el número de consultas externas
+    #número de consultas externas
     num_consultas_externas = int(input("\nNúmero de consultas externas: "))
     consultas_externas = []
     if num_consultas_externas > 0:
-        # Recopilar información para cada consulta externa
+        #información para cada consulta externa
         for i in range(num_consultas_externas):
             print(f"\nConsulta Externa {i+1}:")
             nombre = input("Nombre: ")
@@ -317,45 +318,45 @@ def punto_de_funcion():
             salidas_DE_referenciados = int(input("Número de Datos Elementales Referenciados (Parte de Salida): "))
             salidas_RL_referenciados = int(input("Número de Registros Lógicos Referenciados (Parte de Salida): "))
             tipo_clasificacion_salida = clasificar_complejidad_salida(salidas_DE_referenciados, salidas_RL_referenciados)
-            tipo_clasificacion_consulta = clasificar_complejidad_consulta(tipo_clasificacion_entrada, tipo_clasificacion_salida)
+            tipo_clasificacion_consulta = clasificar_complejidad_ce(tipo_clasificacion_entrada, tipo_clasificacion_salida)
             consultas_externas.append((nombre, entradas_DE_referenciados, entradas_RL_referenciados, tipo_clasificacion_entrada, salidas_DE_referenciados, salidas_RL_referenciados, tipo_clasificacion_salida, tipo_clasificacion_consulta))
 
 
 
-    # Solicitar el número de archivos lógicos internos
+    #número de archivos lógicos internos
     num_archivos_internos = int(input("\nNúmero de archivos lógicos internos: "))
     archivos_internos = []
     if num_archivos_internos > 0:
-        # Recopilar información para cada archivo lógico interno
+        #información para cada archivo lógico interno
         for i in range(num_archivos_internos):
             print(f"\nArchivo Lógico Interno {i+1}:")
             nombre = input("Nombre: ")
-            datos_elementales_referenciados = int(input("Número de Datos Elementales Referenciados: "))
-            registros_logic_referenciados = int(input("Número de Registros Lógicos Referenciados: "))
-            archivos_internos.append((nombre, datos_elementales_referenciados, registros_logic_referenciados))
+            datos_referenciados = int(input("Número de Datos Elementales Referenciados: "))
+            registros_referenciados = int(input("Número de Registros Lógicos Referenciados: "))
+            archivos_internos.append((nombre, datos_referenciados, registros_referenciados))
 
-    # Solicitar el número de archivos de interfaz externa
+    #número de archivos de interfaz externa
     num_archivos_externos = int(input("\nNúmero de archivos de interfaz externa: "))
     archivos_externos = []
     if num_archivos_externos > 0:
-        # Recopilar información para cada archivo de interfaz externa
+        #información para cada archivo de interfaz externa
         for i in range(num_archivos_externos):
             print(f"\nArchivo de Interfaz Externa {i+1}:")
             nombre = input("Nombre: ")
-            datos_elementales_referenciados = int(input("Número de Datos Elementales Referenciados: "))
-            registros_logic_referenciados = int(input("Número de Registros Lógicos Referenciados: "))
-            archivos_externos.append((nombre, datos_elementales_referenciados, registros_logic_referenciados))
+            datos_referenciados = int(input("Número de Datos Elementales Referenciados: "))
+            registros_referenciados = int(input("Número de Registros Lógicos Referenciados: "))
+            archivos_externos.append((nombre, datos_referenciados, registros_referenciados))
 
 
     return entradas_externas, salidas_externas, consultas_externas, archivos_internos, archivos_externos
 
-##fin de metodo punto de funcion
+##FIN de metodo punto de funcion
 
 
 #INICIO CASO DE USO
 def casos_de_uso():
     print("Has seleccionado Casos de Uso")
-    # Se itera la informacion  de los actores de caso de uso
+    #se itera la informacion  de los actores de caso de uso
     num_actores = int(input("\nNúmero de actores: "))
     peso_actores = []
     
@@ -364,7 +365,7 @@ def casos_de_uso():
         
     total_peso_actores = sum(peso_actores)
     
-    # Se itera la informacion de los casos de uso
+    #se itera la informacion de los casos de uso
     num_casos_uso = int(input("\nNúmero de casos de uso: "))
     peso_casos_uso = []
     
@@ -379,11 +380,10 @@ def casos_de_uso():
 
     total_peso_casos_uso = sum(peso_casos_uso)
 
-# Calculo de Punto de Casos de Uso no ajustados
+    #calculo de punto de casos de uso no ajustados
     puntos_casos_uso_no_ajustados = total_peso_actores +  total_peso_casos_uso
 
-
-    # Factores Técnicos (TCF)
+    #Factores Técnicos (TCF)
     print("\nIngresa los valores de los factores técnicos (0-5):\n")
     factores_tecnicos = [
         ("1. Sistema distribuido", 2),
@@ -408,7 +408,7 @@ def casos_de_uso():
 
     tcf = 0.6 + (0.01 * total_factores_tecnicos)
 
-    # Factores Ambientales (ECF)
+    #Factores Ambientales (ECF)
     print("\nIngresa los valores de los factores ambientales (1-5):\n")
     factores_ambientales = [
         ("1. Familiaridad con el modelo de proyecto utilizado", 1.5),
@@ -428,25 +428,24 @@ def casos_de_uso():
 
     ecf = 1.4 + (-0.03 * total_factores_ambientales)
 
-    # Calculo de Puntos de Caso de Uso Ajustados (UCP)
+    #calculo de puntos de caso de uso ajustados (UCP)
     ucp = puntos_casos_uso_no_ajustados * tcf * ecf
         
-    #Impresion de los resultados
+    #los resultados
     print("\nResultados:")
-    print(f"\nPeso de los actores: {total_peso_actores}\nPeso de los casos de uso: {total_peso_casos_uso}\nPuntos de Casos de Uso no ajustados: {puntos_casos_uso_no_ajustados}")
+    print(f"\nPeso de los actores(UAW): {total_peso_actores}\nPeso de los casos de uso(UUCW): {total_peso_casos_uso}\nPuntos de Casos de Uso No Ajustados(UUCP): {puntos_casos_uso_no_ajustados}")
     print(f"Total de Factores Técnicos: {total_factores_tecnicos}")
     print(f"TCF (Factor de Complejidad Técnica): {tcf}")
     print(f"Total de Factores Ambientales: {total_factores_ambientales}")
-    print(f"ECF (Factor de Complejidad Ambiental): {ecf}")
-    print(f"Puntos de Caso de Uso Ajustados (UCP): {ucp}\n")
+    print(f"ECF (Factor de Complejidad Ambiental): {ecf:.4f}")
+    print(f"Puntos de Caso de Uso Ajustados (UCP): {ucp:.4f}\n")
 
 #FIN CASO DE USO
 
 #INICIO METODO COSMIC
 def cosmic():
-
     print("Has seleccionado COSMIC")
-   # Solicitar datos del usuario para las funciones funcionales
+    #solicitando datos del usuario para las funciones funcionales
     funciones = {
     "entradas": 0,
     "salidas": 0,
@@ -463,15 +462,25 @@ def cosmic():
             except ValueError:
                 print("Entrada no válida. Inténtalo de nuevo.")
 
-    # Calcular el tamaño total en CFP
+    #calcular el tamaño total en CFP
     cfp_total = sum(funciones.values())
     
     print(f"\nTamaño total del software en Puntos de Función COSMIC (CFP): {cfp_total}")
-    # Duracion del proyecto
-    respuesta_cpf = input(f"\n¿Desea conocer la duración del proyecto en meses? (s/n):")
+    #duracion del proyecto
+    while True:
+        respuesta_cpf = input("\n¿Desea conocer la duración del proyecto en meses? (s/n): ").lower()
+        if respuesta_cpf in ['s', 'n']:
+            break
+        else:
+            print("Opción no válida, por favor ingrese 's' para SI o 'n' para NO.")
 
-    if respuesta_cpf.lower() == "s":
-        cfp_historico = int(input(f"\nIngrese el historico de CPF mensual promedio:"))
+    if respuesta_cpf == "s":
+        while True:
+            try:
+                cfp_historico = int(input("Ingrese el histórico de CFP mensual promedio: "))
+                break
+            except ValueError:
+                print("Entrada no válida. Por favor ingrese un número.")
         duracion_proyecto = cfp_total/cfp_historico
 
         print(f"\nLa duración del proyecto es de {round(duracion_proyecto,3)} meses\n")
@@ -479,27 +488,27 @@ def cosmic():
 
 def main():
     while True:
-        mostrar_menu()
+        menu()
         opcion = input("Selecciona una opción: ")
 
         if opcion == "1":
            #punto_de_funcion()
            entradas_externas, salidas_externas, consultas_externas, archivos_internos, archivos_externos = punto_de_funcion()
-           print("\nClasificación por Tipo de Complejidad:")
+           print("\nCLASIFICACIÓN POR TIPO DE COMPLEJIDAD:")
            if entradas_externas:
-                print("\nResumen Entradas Externas:")
+                print("\nResumen de Entradas Externas (EE):")
                 for i, entrada in enumerate(entradas_externas):
                     nombre, datos, registros, tipo_complejidad = entrada
                     print(f"{i+1}. Nombre: {nombre}, Datos: {datos}, Registros: {registros}, Complejidad: {tipo_complejidad}")
             
            if salidas_externas:
-                print("\nResumen Salidas Externas:")
+                print("\nResumen de Salidas Externas(SE):")
                 for i, salida in enumerate(salidas_externas):
                     nombre, datos, registros, tipo_complejidad = salida
                     print(f"{i+1}. Nombre: {nombre}, Datos: {datos}, Registros: {registros}, Complejidad: {tipo_complejidad}")
             
            if consultas_externas:
-                print("\nResumen Consultas Externas:")
+                print("\nResumen de Consultas Externas(CE):")
                 for i, consulta in enumerate(consultas_externas):
                     nombre, entradas_DE, entradas_RL, tipo_clasificacion_entrada, salidas_DE, salidas_RL, tipo_clasificacion_salida, tipo_clasificacion_consulta = consulta
                     print(f"{i+1}. Nombre: {nombre} ")
@@ -508,34 +517,37 @@ def main():
                     print(f"   Complejidad Final: {tipo_clasificacion_consulta}")
           
            if archivos_internos:
-                print("\nResumen Archivos Lógicos Internos:")
+                print("\nResumen de Archivos Lógicos Internos(ALI):")
                 for i, archivo in enumerate(archivos_internos):
                     nombre, datos, registros = archivo
-                    tipo_complejidad_archivo = clasificar_complejidad_archivo_interno(datos, registros)
+                    tipo_complejidad_archivo = clasificar_complejidad_ali(datos, registros)
                     print(f"{i+1}. Nombre: {nombre}, Datos: {datos}, Registros: {registros}, Complejidad: {tipo_complejidad_archivo}")
             
            if archivos_externos:
-                print("\nResumen Archivos de Interfaz Externa:")
+                print("\nResumen de Archivos de Interfaz Externa(AIE):")
                 for i, archivo in enumerate(archivos_externos):
                     nombre, datos, registros = archivo
-                    tipo_complejidad_archivo = clasificar_complejidad_archivo_interfaz(datos, registros)
+                    tipo_complejidad_archivo = clasificar_complejidad_aie(datos, registros)
                     print(f"{i+1}. Nombre: {nombre}, Datos: {datos}, Registros: {registros}, Complejidad: {tipo_complejidad_archivo}")
 
 
            # Calcular puntos de función no ajustados
-           puntos_no_ajustados = calcular_puntos_de_funcion_no_ajustados(entradas_externas, salidas_externas, consultas_externas, archivos_internos, archivos_externos)
+           puntos_no_ajustados = pf_no_ajustados(entradas_externas, salidas_externas, consultas_externas, archivos_internos, archivos_externos)
            print("\nCalculando Puntos de Función No Ajustados...")
            print("Puntos de Función No Ajustados:", puntos_no_ajustados)
            print("\n")
 
            # Calcular factor de ajuste
            factor_ajuste = calcular_factor_ajuste()
+           print("\nCalculando Total de Factor de Ajuste...")
+           print("Total de Factor de Ajuste:", factor_ajuste)
+           factor_ajuste_nuevo = (factor_ajuste * 0.01)+ 0.65
            print("\nCalculando Factor de Ajuste...")
-           print("Factor de Ajuste:", factor_ajuste)
+           print("Factor de Ajuste:", factor_ajuste_nuevo)
            print("\n")
 
            # Calcular puntos de función ajustados
-           puntos_funcion_ajustados = calcular_puntos_funcion_ajustados(puntos_no_ajustados, factor_ajuste)
+           puntos_funcion_ajustados = pfa(puntos_no_ajustados, factor_ajuste)
            print("Calculando Puntos de Función Ajustados...")
            print("Puntos de Función Ajustados:", puntos_funcion_ajustados)
            print("\n")
@@ -545,10 +557,10 @@ def main():
         elif opcion == "3":
             cosmic()
         elif opcion == "4":
-            print("Saliendo del programa. ¡Hasta luego!")
+            print("Saliendo del programa.Vuelve pronto.")
             break
         else:
-            print("Opción inválida. Por favor, selecciona una opción válida.")
+            print("Opción inválida. Por favor, selecciona una opción que si sea válida.")
 
 if __name__ == "__main__":
     main()
