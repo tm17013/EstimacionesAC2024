@@ -1,6 +1,6 @@
 # autores: Kenia Stephannie Tepas Mazariego, Andrea Victoria Castro Jiménez
 def mostrar_menu():
-    print("Bienvenido al Sistema de Estimaciones")
+    print("\nBienvenido al Sistema de Estimaciones")
     print("Analisis de Costos Informaticos 2024")
     print("Creado por: Kenia Tepas y Victoria Castro")
     print("Elija una opción")
@@ -438,13 +438,44 @@ def casos_de_uso():
     print(f"TCF (Factor de Complejidad Técnica): {tcf}")
     print(f"Total de Factores Ambientales: {total_factores_ambientales}")
     print(f"ECF (Factor de Complejidad Ambiental): {ecf}")
-    print(f"Puntos de Caso de Uso Ajustados (AUCP): {ucp}\n")
+    print(f"Puntos de Caso de Uso Ajustados (UCP): {ucp}\n")
 
 #FIN CASO DE USO
 
+#INICIO METODO COSMIC
 def cosmic():
+
     print("Has seleccionado COSMIC")
-    # Aquí puedes agregar la lógica para COSMIC
+   # Solicitar datos del usuario para las funciones funcionales
+    funciones = {
+    "entradas": 0,
+    "salidas": 0,
+    "lecturas": 0,
+    "escrituras": 0
+    }
+
+    for tipo in funciones:
+        while True:
+            try:
+                cantidad = int(input(f"Número de {tipo.capitalize()}: "))
+                funciones[tipo] = cantidad
+                break
+            except ValueError:
+                print("Entrada no válida. Inténtalo de nuevo.")
+
+    # Calcular el tamaño total en CFP
+    cfp_total = sum(funciones.values())
+    
+    print(f"\nTamaño total del software en Puntos de Función COSMIC (CFP): {cfp_total}")
+    # Duracion del proyecto
+    respuesta_cpf = input(f"\n¿Desea conocer la duración del proyecto en meses? (s/n):")
+
+    if respuesta_cpf.lower() == "s":
+        cfp_historico = int(input(f"\nIngrese el historico de CPF mensual promedio:"))
+        duracion_proyecto = cfp_total/cfp_historico
+
+        print(f"\nLa duración del proyecto es de {round(duracion_proyecto,3)} meses\n")
+#FIN METODO COSMIC
 
 def main():
     while True:
